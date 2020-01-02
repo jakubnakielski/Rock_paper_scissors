@@ -1,1 +1,1 @@
-https://jakubnakielski.github.io/Rock_paper_scissors/
+https://jakubnakielski.github.io/Rock_paper_scissors/dist/index.html
