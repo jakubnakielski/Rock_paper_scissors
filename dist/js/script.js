@@ -2,11 +2,12 @@ const btn = document.querySelector(".startBtn");
 const numberOfGames = document.querySelector(".rightContainer__numbers > span");
 const wins = document.querySelector(".rightContainer__wins > span");
 const looses = document.querySelector(".rightContainer__losses > span");
-const draws = document.querySelector(".rightContainer__draws > span");
-let yourChoice = "";
-let aiChoice = "";
-let winner = "";
 
+const yourChoice = document.querySelector(".leftContainer__yourChoice");
+const aiChoice = document.querySelector(".leftContainer__aiChoice");
+const winner = document.querySelector(".leftContainer__winner");
+
+const draws = document.querySelector(".leftContainer__yourChoice");
 const choiceArray = [...document.querySelectorAll(".choiceContainer__item")];
 const gameSummary = {
   numbers: 0,
@@ -16,8 +17,16 @@ const gameSummary = {
 };
 const game = {
   playerSelection: "",
-  aiSelection: ""
+  aiSelection: "",
+  winner: ""
 };
+
+const writeCurrentChoices = () => {
+  yourChoice.textContent = game.playerSelection;
+  aiChoice.textContent = game.aiSelection;
+  winner.textContent = game.winner;
+};
+
 const writeResults = () => {
   numberOfGames.textContent = gameSummary.numbers;
   wins.textContent = gameSummary.wins;
@@ -40,9 +49,11 @@ const compareAnswers = () => {
     console.log("AI: " + aiAnswer);
   } else if (playerAnswer == "rock" && aiAnswer == "scissors") {
     gameSummary.wins++;
+    game.winner = "Player";
     console.log("AI: " + aiAnswer);
   } else {
     gameSummary.wins++;
+    game.winner = "Player";
     console.log("AI: " + aiAnswer);
   }
 };
@@ -67,9 +78,9 @@ const playGame = () => {
   gameSummary.numbers++;
   getRandomAnswer();
   compareAnswers();
-
+  writeCurrentChoices();
   writeResults();
 
-  btn.addEventListener("click", playGame);
+  btn.addEventListener("click", playGame); // MAIN FUNCTION
 };
 playGame();
