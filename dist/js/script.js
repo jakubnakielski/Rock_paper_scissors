@@ -57,7 +57,7 @@ const compareAnswers = () => {
     console.log("AI: " + aiAnswer);
   }
 };
-const getRandomAnswer = () => {
+const assignAiChoice = () => {
   const randomNr = Math.floor(Math.random() * 3);
   game.aiSelection = choiceArray[randomNr].dataset.option;
 };
@@ -77,11 +77,14 @@ const selectAnswers = function() {
 const playGame = () => {
   gameSummary.numbers++;
   selectAnswers();
-  getRandomAnswer();
+  assignAiChoice();
   compareAnswers();
   writeCurrentChoices();
   writeResults();
-
-  btn.addEventListener("click", playGame); // MAIN FUNCTION
+  btn.addEventListener("click", playGame);
 };
 playGame();
+
+btn.addEventListener("click", () => {
+  if (!game.playerSelection) alert("Select one of the three options!");
+});
