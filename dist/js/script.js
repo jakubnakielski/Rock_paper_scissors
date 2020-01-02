@@ -26,14 +26,12 @@ const writeCurrentChoices = () => {
   aiChoice.textContent = game.aiSelection;
   winner.textContent = game.winner;
 };
-
 const writeResults = () => {
   numberOfGames.textContent = gameSummary.numbers;
   wins.textContent = gameSummary.wins;
   looses.textContent = gameSummary.losses;
   draws.textContent = gameSummary.draws;
 };
-
 const compareAnswers = () => {
   const playerAnswer = game.playerSelection;
   const aiAnswer = game.aiSelection;
@@ -61,8 +59,7 @@ const assignAiChoice = () => {
   const randomNr = Math.floor(Math.random() * 3);
   game.aiSelection = choiceArray[randomNr].dataset.option;
 };
-
-const selectAnswers = function() {
+const selectAnswers = () => {
   choiceArray.forEach(el => {
     el.addEventListener("click", e => {
       game.playerSelection = e.target.dataset.option;
@@ -86,5 +83,5 @@ const playGame = () => {
 playGame();
 
 btn.addEventListener("click", () => {
-  if (!game.playerSelection) alert("Select one of the three options!");
+  if (!game.playerSelection) alert("Select one of three options!");
 });
