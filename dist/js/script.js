@@ -62,20 +62,21 @@ const getRandomAnswer = () => {
   game.aiSelection = choiceArray[randomNr].dataset.option;
 };
 
-const selectAnswer = function() {
-  game.playerSelection = this.dataset.option;
-  choiceArray.forEach(e => {
-    e.style.borderColor = "";
+const selectAnswers = function() {
+  choiceArray.forEach(el => {
+    el.addEventListener("click", e => {
+      game.playerSelection = e.target.dataset.option;
+      choiceArray.forEach(e => {
+        e.style.borderColor = "";
+      });
+      e.target.style.borderColor = "red";
+    });
   });
-  this.style.borderColor = "red";
 };
 
 const playGame = () => {
-  choiceArray.forEach(el => {
-    el.addEventListener("click", selectAnswer);
-  });
-
   gameSummary.numbers++;
+  selectAnswers();
   getRandomAnswer();
   compareAnswers();
   writeCurrentChoices();
