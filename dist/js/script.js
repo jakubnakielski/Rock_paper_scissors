@@ -1,5 +1,9 @@
 const btn = document.querySelector(".startBtn");
-const results = document.querySelector(".rightContainer");
+const numberOfGames = document.querySelector(".rightContainer__numbers");
+const wins = document.querySelector(".rightContainer__wins");
+const looses = document.querySelector(".rightContainer__losses");
+const draws = document.querySelector(".rightContainer__draws");
+
 const choiceArray = [...document.querySelectorAll(".choiceContainer__item")];
 const gameSummary = {
   numbers: "0",
@@ -11,12 +15,13 @@ const game = {
   playerSelection: "",
   aiSelection: ""
 };
-
+const writeResults = () => {
+    resultsHeader = 
+};
 const compareAnswers = () => {
   const playerAnswer = game.playerSelection;
   const aiAnswer = game.aiSelection;
 
-  //   console.log(playerAnswer, aiAnswer);
   if (playerAnswer == aiAnswer) {
     gameSummary.draws++;
     console.log("AI:" + aiAnswer);
