@@ -7,7 +7,7 @@ const yourChoice = document.querySelector(".leftContainer__yourChoice");
 const aiChoice = document.querySelector(".leftContainer__aiChoice");
 const winner = document.querySelector(".leftContainer__winner");
 
-const draws = document.querySelector(".leftContainer__yourChoice");
+const draws = document.querySelector(".rightContainer__draws > span");
 const choiceArray = [...document.querySelectorAll(".choiceContainer__item")];
 const gameSummary = {
   numbers: 0,
@@ -21,12 +21,12 @@ const game = {
   winner: ""
 };
 
-const writeCurrentChoices = () => {
+const writeResults = () => {
   yourChoice.textContent = game.playerSelection;
   aiChoice.textContent = game.aiSelection;
   winner.textContent = game.winner;
 };
-const writeResults = () => {
+const writeSummary = () => {
   numberOfGames.textContent = gameSummary.numbers;
   wins.textContent = gameSummary.wins;
   looses.textContent = gameSummary.losses;
@@ -76,8 +76,8 @@ const playGame = () => {
   selectAnswers();
   assignAiChoice();
   compareAnswers();
-  writeCurrentChoices();
   writeResults();
+  writeSummary();
   btn.addEventListener("click", playGame);
 };
 playGame();
