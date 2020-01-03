@@ -3,9 +3,9 @@ const numberOfGames = document.querySelector(".rightContainer__numbers > span");
 const wins = document.querySelector(".rightContainer__wins > span");
 const looses = document.querySelector(".rightContainer__losses > span");
 
-const yourChoice = document.querySelector(".leftContainer__yourChoice");
-const aiChoice = document.querySelector(".leftContainer__aiChoice");
-const winner = document.querySelector(".leftContainer__winner");
+const yourChoice = document.querySelector(".leftContainer__yourChoice > span");
+const aiChoice = document.querySelector(".leftContainer__aiChoice > span");
+const winner = document.querySelector(".leftContainer__winner > span");
 
 const draws = document.querySelector(".rightContainer__draws > span");
 const choiceArray = [...document.querySelectorAll(".choiceContainer__item")];
@@ -20,7 +20,15 @@ const game = {
   aiSelection: "",
   winner: ""
 };
-
+const resetObjects = () => {
+  game.playerSelection = "";
+  game.aiSelection = "";
+  game.winner = "";
+  gameSummary.numbers = 0;
+  gameSummary.wins = 0;
+  gameSummary.losses = 0;
+  gameSummary.draws = 0;
+};
 const writeResults = () => {
   yourChoice.textContent = game.playerSelection;
   aiChoice.textContent = game.aiSelection;
@@ -38,14 +46,18 @@ const compareAnswers = () => {
 
   if (playerAnswer == aiAnswer) {
     gameSummary.draws++;
+    game.winner = "Draw";
     console.log("AI:" + aiAnswer);
   } else if (playerAnswer == "paper" && aiAnswer == "scissors") {
     gameSummary.losses++;
+    game.winner = "Computer";
     console.log("AI: " + aiAnswer);
   } else if (playerAnswer == "rock" && aiAnswer == "paper") {
     gameSummary.losses++;
+    game.winner = "Computer";
     console.log("AI: " + aiAnswer);
   } else if (playerAnswer == "rock" && aiAnswer == "scissors") {
+    //<--zle, zeby w 2 strony dzialalo
     gameSummary.wins++;
     game.winner = "Player";
     console.log("AI: " + aiAnswer);
@@ -72,16 +84,17 @@ const selectAnswers = () => {
 };
 
 const playGame = () => {
-  gameSummary.numbers++;
   selectAnswers();
   assignAiChoice();
+  //   resetObjects();
   compareAnswers();
   writeResults();
-  writeSummary();
+  //   writeSummary();
+  gameSummary.numbers++;
   btn.addEventListener("click", playGame);
 };
 playGame();
 
-btn.addEventListener("click", () => {
-  if (!game.playerSelection) alert("Select one of three options!");
-});
+// btn.addEventListener("click", () => {
+//   if (!game.playerSelection) alert("Select one of three options!");
+// });
