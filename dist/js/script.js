@@ -104,6 +104,6 @@ const playGame = () => {
 };
 playGame();
 
-// btn.addEventListener("click", () => {
-//   if (!game.playerSelection) alert("Select one of three options!");
-// });
+btn.addEventListener("click", () => {
+  if (!game.playerSelection) alert("Select one of three options!");
+});
