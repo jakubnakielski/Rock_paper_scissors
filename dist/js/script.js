@@ -80,6 +80,8 @@ const assignAiChoice = () => {
 };
 const selectAnswers = () => {
   choiceArray.forEach(el => {
+    el.style.borderColor = "";
+
     el.addEventListener("click", e => {
       game.playerSelection = e.target.dataset.option;
       choiceArray.forEach(e => {
