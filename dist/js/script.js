@@ -20,6 +20,7 @@ const game = {
   aiSelection: "",
   winner: ""
 };
+
 const resetObjects = () => {
   game.playerSelection = "";
   game.aiSelection = "";
@@ -29,6 +30,7 @@ const resetObjects = () => {
   gameSummary.losses = 0;
   gameSummary.draws = 0;
 };
+
 const writeResults = () => {
   yourChoice.textContent = game.playerSelection;
   aiChoice.textContent = game.aiSelection;
@@ -91,19 +93,23 @@ const selectAnswers = () => {
     });
   });
 };
+selectAnswers();
 
 const playGame = () => {
+  gameSummary.numbers++;
   selectAnswers();
   assignAiChoice();
-  //   resetObjects();
   compareAnswers();
   writeResults();
   writeSummary();
-  gameSummary.numbers++;
-  btn.addEventListener("click", playGame);
+  resetObjects();
 };
-playGame();
 
 btn.addEventListener("click", () => {
-  if (!game.playerSelection) alert("Select one of three options!");
+  if (!game.playerSelection) {
+    alert("Select one of three options!");
+    return;
+  }
+
+  playGame();
 });
