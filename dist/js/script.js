@@ -25,22 +25,21 @@ const resetObjects = () => {
   game.playerSelection = "";
   game.aiSelection = "";
   game.winner = "";
-  gameSummary.numbers = 0;
-  gameSummary.wins = 0;
-  gameSummary.losses = 0;
-  gameSummary.draws = 0;
-};
-
-const writeResults = () => {
-  yourChoice.textContent = game.playerSelection;
-  aiChoice.textContent = game.aiSelection;
-  winner.textContent = game.winner;
+  //   gameSummary.numbers = 0;
+  //   gameSummary.wins = 0;
+  //   gameSummary.losses = 0;
+  //   gameSummary.draws = 0;
 };
 const writeSummary = () => {
   numberOfGames.textContent = gameSummary.numbers;
   wins.textContent = gameSummary.wins;
   looses.textContent = gameSummary.losses;
   draws.textContent = gameSummary.draws;
+};
+const writeResults = () => {
+  yourChoice.textContent = game.playerSelection;
+  aiChoice.textContent = game.aiSelection;
+  winner.textContent = game.winner;
 };
 const compareAnswers = () => {
   const playerAnswer = game.playerSelection;
@@ -71,7 +70,7 @@ const compareAnswers = () => {
       gameSummary.wins++;
       game.winner = "Player";
     } else if (aiAnswer == "rock") {
-      gameSummary.looses++;
+      gameSummary.losses++;
       game.winner = "Computer";
     }
   }
@@ -108,8 +107,5 @@ const playGame = () => {
 btn.addEventListener("click", () => {
   if (!game.playerSelection) {
     alert("Select one of three options!");
-    return;
-  }
-
-  playGame();
+  } else playGame();
 });
