@@ -55,3 +55,8 @@ h2 {
 .rightContainer span {
   font-weight: 700;
 }
+
+.leftContainer p:last-child span {
+  line-height: 0;
+  font-size: 28px;
+}

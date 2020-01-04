@@ -51,7 +51,7 @@ const compareAnswers = () => {
   } else if (playerAnswer == "paper") {
     if (aiAnswer == "rock") {
       gameSummary.wins++;
-      game.winner = "Player";
+      game.winner = "You!";
     }
     if (aiAnswer == "scissors") {
       gameSummary.losses++;
@@ -63,12 +63,12 @@ const compareAnswers = () => {
       game.winner = "Computer";
     } else if (aiAnswer == "scissors") {
       gameSummary.wins++;
-      game.winner = "Player";
+      game.winner = "You!";
     }
   } else if (playerAnswer == "scissors") {
     if (aiAnswer == "paper") {
       gameSummary.wins++;
-      game.winner = "Player";
+      game.winner = "You!";
     } else if (aiAnswer == "rock") {
       gameSummary.losses++;
       game.winner = "Computer";
