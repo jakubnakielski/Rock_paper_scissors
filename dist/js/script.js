@@ -47,24 +47,31 @@ const compareAnswers = () => {
   if (playerAnswer == aiAnswer) {
     gameSummary.draws++;
     game.winner = "Draw";
-    console.log("AI:" + aiAnswer);
-  } else if (playerAnswer == "paper" && aiAnswer == "scissors") {
-    gameSummary.losses++;
-    game.winner = "Computer";
-    console.log("AI: " + aiAnswer);
-  } else if (playerAnswer == "rock" && aiAnswer == "paper") {
-    gameSummary.losses++;
-    game.winner = "Computer";
-    console.log("AI: " + aiAnswer);
-  } else if (playerAnswer == "rock" && aiAnswer == "scissors") {
-    //<--zle, zeby w 2 strony dzialalo
-    gameSummary.wins++;
-    game.winner = "Player";
-    console.log("AI: " + aiAnswer);
-  } else {
-    gameSummary.wins++;
-    game.winner = "Player";
-    console.log("AI: " + aiAnswer);
+  } else if (playerAnswer == "paper") {
+    if (aiAnswer == "rock") {
+      gameSummary.wins++;
+      game.winner = "Player";
+    }
+    if (aiAnswer == "scissors") {
+      gameSummary.losses++;
+      game.winner = "Computer";
+    }
+  } else if (playerAnswer == "rock") {
+    if (aiAnswer == "paper") {
+      gameSummary.losses++;
+      game.winner = "Computer";
+    } else if (aiAnswer == "scissors") {
+      gameSummary.wins++;
+      game.winner = "Player";
+    }
+  } else if (playerAnswer == "scissors") {
+    if (aiAnswer == "paper") {
+      gameSummary.wins++;
+      game.winner = "Player";
+    } else if (aiAnswer == "rock") {
+      gameSummary.looses++;
+      game.winner = "Computer";
+    }
   }
 };
 const assignAiChoice = () => {
@@ -89,7 +96,7 @@ const playGame = () => {
   //   resetObjects();
   compareAnswers();
   writeResults();
-  //   writeSummary();
+  writeSummary();
   gameSummary.numbers++;
   btn.addEventListener("click", playGame);
 };
